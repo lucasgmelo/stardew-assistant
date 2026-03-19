@@ -1,0 +1,8 @@
+requests
+beautifulsoup4
+chromadb
+langchain
+langchain-text-splitters
+langchain-community
+langchain-ollama
+rich

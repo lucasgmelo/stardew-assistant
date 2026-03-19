@@ -1,0 +1,8 @@
+# Ambiente Python
+.venv/
+__pycache__/
+*.pyc
+
+# Dados gerados (pesados, não precisam de versão)
+wiki_pages/
+chroma_db/
