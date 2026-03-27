@@ -6,3 +6,5 @@ langchain-text-splitters
 langchain-community
 langchain-ollama
 rich
+fastapi
+uvicorn

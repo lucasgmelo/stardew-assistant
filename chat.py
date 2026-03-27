@@ -12,12 +12,20 @@ from config import CHROMA_PATH, COLLECTION_NAME, EMBED_MODEL, LLM_MODEL
 
 console = Console()
 
-def build_prompt(context: str, question: str, game_state: str) -> str:
+def build_prompt(context: str, question: str, game_state: str, history: list[dict] | None = None) -> str:
+    history_text = ""
+    if history:
+        lines = []
+        for msg in history:
+            role = "Jogador" if msg["role"] == "user" else "Guia"
+            lines.append(f"{role}: {msg['text']}")
+        history_text = "\n\nHistórico da conversa:\n" + "\n".join(lines)
+
     return f"""Você é um guia experiente de Stardew Valley. Responda em português, de forma prática e direta.
 Use as informações da wiki abaixo para embasar sua resposta. Se não souber algo, diga claramente.
 
 Estado atual do jogador:
-{game_state if game_state else "Não informado"}
+{game_state if game_state else "Não informado"}{history_text}
 
 Informações relevantes da wiki:
 {context}
